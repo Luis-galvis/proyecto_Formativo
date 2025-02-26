@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    position: relative;
+    z-index: 1;
+    background-image: url(../fotos/ampli.jpeg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+#nav-boot {
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    padding: 0 5%;
+    width: 100%;
+    z-index: 1050;
+    position: fixed;
+}
+
+#nav-boot a {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(255, 255, 255);
+}
+
+#logo img {
+    width: 2vw;
+    height: auto;
+}
+
+.navbar-toggler {
+    border: white;
+}
+
+.navbar-toggler-icon {
+    filter: invert(0);
+}
+
+.collapse.show {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.swiper-container {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    height: 80vh;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    overflow: hidden; /* Evita el desbordamiento */
+}
+
+.swiper-slide {
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: auto; /* Ajusta el ancho automáticamente */
+}
+
+.pricing-card {
+    position: relative;
+    border: 2px solid #000000;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 2rem;
+    text-align: center;
+    width: 23vw;
+    margin: 0 1rem;
+    flex: 0 0 auto;
+}
+
+.pricing-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../fotos/pob5-removebg-preview.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1px);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.pricing-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.pricing-card h2 {
+    margin-bottom: 1rem;
+    color: rgb(0, 0, 0);
+    filter: blur(0px);
+}
+
+.pricing-card .price {
+    font-size: 2rem;
+    color: #000000;
+}
+
+.pricing-card .price span {
+    font-size: 1rem;
+    color: #000000;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    color: rgb(0, 0, 0);
+}
+
+.pricing-card ul li {
+    padding: 0.5rem 0;
+}
+
+.pricing-card .buy-now {
+    background-color: #fcc8c879;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pricing-card .buy-now:hover {
+    background-color: #ffc5c5;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #000 !important;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    color: #ffffff !important;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .pricing-card {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 992px) {
+    #logo img {
+        width: 3vw;
+    }
+    .pricing-card {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #nav-boot {
+        height: 4rem;
+    }
+    #logo img {
+        width: 4vw;
+    }
+    .pricing-card {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 576px) {
+    #nav-boot {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+    #logo img {
+        width: 8vw;
+    }
+    .pricing-card {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 400px) {
+    #nav-boot {
+        padding: 0.5rem;
+    }
+    #logo img {
+        width: 7vw;
+    }
+    .pricing-card {
+        width: 90vw;
+    }
+}

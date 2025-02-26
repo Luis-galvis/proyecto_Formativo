@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cambiar contraseña</title>
+    <link rel="shortcut icon" href="../fotos/bushido-removebg-preview-removebg-preview-removebg-preview.png">
+    <link rel="stylesheet" href="../css_admin/cambiarcontraseña.css">
+
+</head>
+<body>
+    <header class="Header">
+
+
+        <div class="logo">
+            <a href="../html_usuario/index.html"><img src="../fotos/nuevobushido.png" alt="Logo de la marca"></a>
+        </div>
+
+        <div class="right-links">
+            <ul class="nav-links">
+
+                <li><a href="../html_usuario/iniciose.html">salir</a></li>
+            </ul>
+        </div>
+    </header>
+    <form class="form" id="contactForm" method="POST" action="../php/cambiar_contraseñas.php">
+        <button class="button3" type="button" onclick="toggleChangePassword()">¿Olvidó su contraseña?</button>
+    
+        <!-- Formulario de cambio de contraseña (inicialmente oculto) -->
+        <div id="cambiar_contraseña" style="display:none;">
+            <p id="heading">Cambiar Contraseña</p>
+            
+            <!-- Campo para la nueva contraseña -->
+            <div class="field">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                </svg>
+                <input autocomplete="off" placeholder="Nueva Contraseña" class="input-field" type="password" name="nueva_contraseña" required>
+            </div>
+            
+            <!-- Campo para confirmar la nueva contraseña -->
+            <div class="field">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                </svg>
+                <input autocomplete="off" placeholder="Confirmar Contraseña" class="input-field" type="password" name="confirmar_contraseña" required>
+            </div>
+            
+            <!-- Campo para el número de documento -->
+            <div class="field">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                </svg>
+                <input autocomplete="off" placeholder="Número de Documento" class="input-field" type="text" name="documento" required>
+            </div>
+            
+            <!-- Campo para el lugar de expedición -->
+            <div class="field">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                </svg>
+                <input autocomplete="off" placeholder="Lugar de Expedición" class="input-field" type="text" name="lugar_expedicion" required>
+            </div>
+    
+            <div class="btn">
+                <button class="button2" type="submit" name="cambiar_contraseña">Cambiar Contraseña</button>
+            </div>
+        </div>
+        <div id="responseMessage"></div>
+    </form>
+    
+    <script>
+        function toggleChangePassword() {
+            var changePasswordForm = document.getElementById('cambiar_contraseña');
+            if (changePasswordForm.style.display === 'none') {
+                changePasswordForm.style.display = 'block';
+            } else {
+                changePasswordForm.style.display = 'none';
+            }
+        }
+    </script>
+    <script>document.getElementById('contactForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evitar la recarga de la página
+        var formData = new FormData(this);
+    
+        // Usar fetch para enviar datos al backend
+        fetch('../php/cambiar_contraseñas.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                // Mostrar respuesta en el contenedor de mensajes
+                document.getElementById('responseMessage').innerHTML = data;
+                // Limpiar el formulario si la actualización fue exitosa
+                if (data.includes("Contraseña actualizada correctamente")) {
+                    document.getElementById('contactForm').reset();
+                }
+            })
+            .catch(error => {
+                document.getElementById('responseMessage').innerHTML = 'Ocurrió un error: ' + error;
+                console.error('Error:', error);
+            });
+    });
+    
+        </script>
+</body>
+</html>
