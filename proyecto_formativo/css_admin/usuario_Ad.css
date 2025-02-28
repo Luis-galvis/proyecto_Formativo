@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    position: relative;
+    z-index: 1;
+    background-image: url(../fotos/ampli.jpeg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+#nav-boot {
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    padding: 0 5%;
+    width: 100%;
+    z-index: 1050;
+    position: fixed;
+  }
+  
+  #nav-boot a {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(255, 255, 255);
+  }
+  
+  #logo img {
+    width: 2vw;
+    height: auto;
+  }
+  
+  .navbar-toggler {
+    border: white;
+  }
+  
+  .navbar-toggler-icon {
+    filter: invert(0);
+  }
+  
+  .collapse.show {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .form {
+      width: 50vw;
+      left: 5vw;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .form {
+      width: 60vw;
+      left: 10vw;
+      margin-top: 35vw;
+    }
+  
+    #logo img {
+      width: 3vw;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .form {
+      width: 70vw;
+      left: 15vw;
+    }
+  
+    #nav-boot {
+      height: 4rem;
+    }
+  
+    #logo img {
+      width: 4vw;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .form {
+      width: 80vw;
+      left: 10vw;
+      top: 10vh;
+      
+    }
+  
+    #nav-boot {
+      flex-direction: column;
+      height: auto;
+      padding: 1rem;
+    }
+  
+    #logo img {
+      width: 8vw;
+    }
+    body{
+      background-size: cover;
+    }
+    body::before {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .form {
+      width: 90vw;
+      left: 5vw;
+      top: 5vh;
+    }
+  
+    #nav-boot {
+      padding: 0.5rem;
+    }
+  
+    #logo img {
+      width: 7vw;
+    }
+  
+    body::before {
+      display: none;
+    }
+  }
+  

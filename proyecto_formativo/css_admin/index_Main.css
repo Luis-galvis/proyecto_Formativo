@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    position: relative;
+    z-index: 1;
+    background-image: url(../fotos/fondosinbola.jpeg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+#nav-boot {
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    padding: 0 5%;
+    width: 100%;
+    z-index: 1050;
+    position: fixed;
+  }
+  
+  #nav-boot a {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(255, 255, 255);
+  }
+  
+  #logo img {
+    width: 2vw;
+    height: auto;
+  }
+  
+  .navbar-toggler {
+    border: white;
+  }
+  
+  .navbar-toggler-icon {
+    filter: invert(0);
+  }
+  
+  .collapse.show {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+.bie{
+    font-size: 3em; /* Agranda el texto */
+    font-weight: bold; /* Hace el texto más grueso */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    letter-spacing: 4px; /* Añade espacio entre las letras */
+    justify-content: center;
+    display: flex;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    color: white;
+    font-family: 'Poppins', sans-serif; 
+    position: relative;
+    right: 30vw;
+    top: 15vw;
+    animation: fadeIn 3s ease-in-out; 
+    pointer-events: none; 
+
+}
+
+.ads{
+    font-size: 3em; /* Agranda el texto */
+    font-weight: bold; /* Hace el texto más grueso */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    letter-spacing: 4px; /* Añade espacio entre las letras */
+    justify-content: center;
+    display: flex;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    color: white;
+    font-family: 'Poppins', sans-serif; 
+    position: relative;
+    right: 15vw;
+    top: 15vw;
+    animation: fadeIn 3s ease-in-out; 
+    pointer-events: none; 
+}/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+
+
+  #logo img {
+    width: 3vw;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  #nav-boot {
+    height: 4rem;
+  }
+
+  #logo img {
+    width: 4vw;
+  }
+}
+
+@media (max-width: 576px) {
+
+  #nav-boot {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  #logo img {
+    width: 8vw;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+
+  #nav-boot {
+    padding: 0.5rem;
+  }
+
+  #logo img {
+    width: 7vw;
+  }
+
+
+}

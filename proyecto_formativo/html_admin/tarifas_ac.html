@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos y accesorios</title>
+    <link rel="stylesheet" href="../css_admin/main_Ad.css">
+    <link rel="stylesheet" href="../css_admin/tarifas_ac.css">
+    <link rel="shortcut icon"
+        href="../fotos/bushido-removebg-preview-removebg-preview-removebg-preview.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">   
+
+</head>
+
+<body>
+    <header>
+        <nav id="nav-boot" class="navbar navbar-expand-md navbar-dark bg-black fixed-top">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a id="logo" class="navbar-brand" href="../html_admin/main_ad.html">
+                    <img src="../fotos/nuevobushido.png" alt="Logo de la marca">
+                </a>
+
+                <!-- Botón Hamburguesa (Blanco) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú -->
+                <div class="collapse navbar-collapse rounded-menu" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mt-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="main_ad.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="tarifas_ac.html">Grupos y accesorios</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="rango.php">rango</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="matricula.html">matricula</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="act_matri.html">actualizar matricula</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="pagos.html">pagos</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="comentariosad.html">Informacion</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="asistencia.html">asistencia</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="buscar_usu.html">Buscar</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="../html_usuario/index.html">salir</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Nuevo Accesorio</h2><br>
+            <form id="dotacionForm" action="../php/guardar_dotacion.php" method="post" enctype="multipart/form-data">
+                <label for="nombre-accesorio">Nombre:</label>
+                <input type="text" id="nombre-accesorio" name="nombre-accesorio" required>
+                
+                <label for="precio-accesorio">Precio:</label>
+                <input type="text" id="precio-accesorio" name="precio-accesorio" required>
+                
+                <label for="imagen-accesorio">Imagen:</label>
+                <input type="file" id="imagen-accesorio" name="imagen-accesorio" accept="image/*" required>
+                
+                <button type="submit">Crear Accesorio</button>
+                <div id="responseMessage"></div> <!-- Aquí se mostrará el mensaje de respuesta -->
+            </form>
+            
+            
+        </div>
+
+        <div class="form-container">
+            <h2>Nueva grupo</h2>
+            <form id="crearGrupoForm" action="../php/guardar_grupo.php" method="post">
+                <label for="nombre-grupo">Nombre del Grupo:</label>
+                <input type="text" id="nombre-grupo" name="nombre-grupo" required>
+            
+                <label for="codigo-grupo">Código:</label>
+                <input type="number" id="codigo-grupo" name="codigo-grupo">
+            
+                <label for="horario-grupo">Horario:</label>
+                <input type="text" id="horario-grupo" name="horario-grupo">
+            
+                <label for="precio-grupo">Precio:</label>
+                <input type="number" id="precio-grupo" name="precio-grupo" required>
+            
+                <button type="submit">Crear Grupo</button>
+                <div id="responseMessage2"></div> <!-- Mensaje de respuesta -->
+            </form>
+            
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button type="button"><a href="../html_admin/accesorios.php">Ver accesorios</a></button>
+        <button type="button"><a href="../html_admin/tarii.php">Ver grupos</a></button>
+    </div>
+    <script>
+        // Escucha el evento submit del formulario
+        document.getElementById('dotacionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío predeterminado del formulario
+    
+            const formData = new FormData(this); // Crea un FormData con los datos del formulario
+    
+            // Realiza la solicitud fetch
+            fetch('../php/guardar_dotacion.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text()) // Procesa la respuesta como texto
+            .then(data => {
+                // Muestra el mensaje de respuesta dentro del formulario
+                const responseMessage = document.getElementById('responseMessage');
+                responseMessage.innerHTML = data;
+                responseMessage.style.color = 'green'; // Opcional: Estiliza el mensaje como éxito
+                this.reset(); // Reinicia el formulario
+            })
+            .catch(error => {
+                console.error('Error:', error); // Imprime el error en la consola
+                const responseMessage = document.getElementById('responseMessage');
+                responseMessage.innerHTML = 'Ocurrió un error al guardar el accesorio.';
+                responseMessage.style.color = 'red'; // Opcional: Estiliza el mensaje como error
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('crearGrupoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previene el envío predeterminado del formulario
+    
+            const formData = new FormData(this); // Captura los datos del formulario
+    
+            fetch('../php/guardar_grupo.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text()) // Procesa la respuesta como texto
+            .then(data => {
+                const responseMessage = document.getElementById('responseMessage2');
+                responseMessage.innerHTML = data; // Muestra el mensaje en el formulario
+                responseMessage.style.color = 'green';
+                this.reset(); // Reinicia el formulario tras el envío
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const responseMessage = document.getElementById('responseMessage2');
+                responseMessage.innerHTML = 'Ocurrió un error al guardar el grupo.';
+                responseMessage.style.color = 'red';
+            });
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

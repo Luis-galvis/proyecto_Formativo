@@ -1,0 +1,6 @@
+Factura
+ID Usuario: 28
+ID Matrícula: 12
+ID Grupo: 6
+Pagos:
+Año: 2025, Mes: 07, Monto: 120000

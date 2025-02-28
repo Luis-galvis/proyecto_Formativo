@@ -1,0 +1,5 @@
+Factura
+ID Usuario: 28
+ID Matrícula: 12
+ID Grupo: 6
+Pagos:
